@@ -35,7 +35,7 @@ Captured frame in 0.00 seconds.
 Writing JPEG image to 'image.jpg'.
 ```
 
-![](images/image.jpg)
+![Basic image capture](images/image.jpg)
 
 Note the small default resolution used, and the presence of a banner showing the timestamp.
 
@@ -61,9 +61,9 @@ Captured frame in 0.00 seconds.
 Writing JPEG image to 'image2.jpg'.
 ```
 
-![](images/image2.jpg)
+![Full resolution image](images/image2.jpg)
 
-Picture not taken at the full resolution of the webcam, with the banner present.
+Picture now taken at the full resolution of the webcam, with the banner present.
 
 ### Specify no banner
 
@@ -88,7 +88,7 @@ Disabling banner.
 Writing JPEG image to 'image3.jpg'.
 ```
 
-![](images/image3.jpg)
+![Full resolution image with no banner](images/image3.jpg)
 
 Now the picture is taken at full resolution with no banner.
 
@@ -96,13 +96,19 @@ Now the picture is taken at full resolution with no banner.
 
 You may experience poor quality pictures with a USB webcam, such as this accidentally artistic piece:
 
-![](images/jack.jpg)
+![Bad webcam picture](images/jack.jpg)
 
 Some webcams are more reliable than others, but this sort of issue may occur with poor quality webcams. If the problem persists, ensure your system is [up to date](../../raspbian/updating.md). Also try other webcams, but you'll get the best performance from the Raspberry Pi [camera module](http://www.raspberrypi.org/help/camera-module-setup/).
 
 ## Bash script
 
-You can write a Bash script which takes a picture with the webcam. To create a script, open up your editor of choice and write the following example code:
+You can write a Bash script which takes a picture with the webcam. The script below saves the images in the `/home/pi/webcam` directory, so create the `webcam` subdirectory first with:
+
+```bash
+mkdir webcam
+```
+
+To create a script, open up your editor of choice and write the following example code:
 
 ```bash
 #!/bin/bash
@@ -173,5 +179,5 @@ Other tools are available that may come in handy when using the camera or a webc
     - Copy files over SSH to get copies of pictures taken on the Pi on your main computer
 - [rsync](../../remote-access/ssh/rsync.md)
     - Use `rsync` to synchronise the folder of pictures taken in a folder between your Pi to your computer
-- [cron](../../linux/cron.md)
+- [cron](../../linux/usage/cron.md)
     - Use `cron` to schedule taking a picture at a given interval, such as every minute to capture a time-lapse

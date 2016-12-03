@@ -14,20 +14,24 @@ sudo apt-get install apache2 -y
 
 ## Test the web server
 
-By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../../troubleshooting/hardware/networking/ip-address.md)).
+By default, Apache puts a test HTML file in the web folder. This default web page is served when you browse to `http://localhost/` on the Pi itself, or `http://192.168.1.10` (whatever the Pi's IP address is) from another computer on the network. To find the Pi's IP address, type `hostname -I` at the command line (or read more about finding your [IP address](../ip-address.md)).
 
 Browse to the default web page either on the Pi or from another computer on the network and you should see the following:
 
-![](images/apache-it-works.png)
+![Apache success message](images/apache-it-works.png)
 
 This means you have Apache working!
 
 ### Changing the default web page
 
-This default web page is just a HTML file on the filesystem. It is located at `/var/www/index.html`. navigate to this directory in the Terminal and have a look at what's inside:
+This default web page is just a HTML file on the filesystem. It is located at `/var/www/html/index.html`.
+
+**Note: The directory was `/var/www` in Raspbian Wheezy but is now `/var/www/html` in Raspbian Jessie**
+
+Navigate to this directory in the Terminal and have a look at what's inside:
 
 ```
-cd /var/www
+cd /var/www/html
 ls -al
 ```
 
@@ -40,7 +44,7 @@ drwxr-xr-x 12 root root 4096 Jan  8 01:28 ..
 -rw-r--r--  1 root root  177 Jan  8 01:29 index.html
 ```
 
-This shows that there is one file in `/var/www/` called `index.html`. The `.` refers to the directory itself `/var/www/` and the `..` refers to the parent directory `/var/`.
+This shows that there is one file in `/var/www/html/` called `index.html`. The `.` refers to the directory itself `/var/www/html` and the `..` refers to the parent directory `/www/`.
 
 ### What the columns mean
 
@@ -51,7 +55,7 @@ This shows that there is one file in `/var/www/` called `index.html`. The `.` re
 5. The file size
 6. The last modification date & time
 
-As you can see, by default the `www` directory and `index.html` file are both owned by the `root` user. In order to edit the file, you must gain `root` permissions. Either change the owner to your own user (`sudo chown pi: index.html`) before editing, or edit with `sudo`, e.g. `sudo nano index.html`.
+As you can see, by default the `html` directory and `index.html` file are both owned by the `root` user. In order to edit the file, you must gain `root` permissions. Change the owner to your own user with `sudo chown pi: index.html` before editing.
 
 Try editing this file and refreshing the browser to see the web page change.
 
@@ -67,34 +71,36 @@ To allow your Apache server to process PHP files, you'll need to install PHP5 an
 sudo apt-get install php5 libapache2-mod-php5 -y
 ```
 
-Now move the `index.html` file to `index.php`:
+Now remove the `index.html` file:
 
 ```bash
-sudo mv index.html index.php
+sudo rm index.html
 ```
 
-and edit the file:
+and create the file `index.php`:
 
 ```bash
-sudo nano index.php
+sudo leafpad index.php
 ```
 
-to put some PHP content in it:
+*Note: Leafpad is a graphical editor. Alternatively, use `nano` if you're restricted to the command line*
+
+Put some PHP content in it:
 
 ```php
-<?php echo "hello world";
+<?php echo "hello world"; ?>
 ```
 
 Now save and refresh your browser. You should see "hello world". This is not dynamic but still served by PHP. Try something dynamic:
 
 ```php
-<?php echo date('Y-m-d H:i:s');
+<?php echo date('Y-m-d H:i:s'); ?>
 ```
 
 or show your PHP info:
 
 ```php
-<?php phpinfo();
+<?php phpinfo(); ?>
 ```
 
 ### Further - WordPress

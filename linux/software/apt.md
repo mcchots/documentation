@@ -1,32 +1,32 @@
 # APT
 
-The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) which comes from Debian. If a piece of software is packaged in Debian and works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
+The easiest way to manage installing, upgrading, and removing software is using APT (Advanced Packaging Tool) from Debian. If a piece of software is packaged in Debian and it works on the Raspberry Pi's ARM architecture, it should also be available in Raspbian.
 
 To install or remove packages you need root user permissions, so your user needs to be in `sudoers` or you must be logged in as `root`. Read more about [users](../usage/users.md) and [root](../usage/root.md).
 
-To install new packages, or update existing ones, you will need an internet connection.
+To install new packages, or update existing ones, you'll need an internet connection.
 
 Note that installing software uses up disk space on your SD card, so you should keep an eye on disk usage and use an appropriately sized SD card.
 
-Also note that a lock is performed while software is installing, so you cannot install multiple packages at the same time.
+Also note that a lock is performed while software is installing, so you can't install multiple packages at the same time.
 
 ## Software sources
 
 APT keeps a list of software sources on your Pi in a file at `/etc/apt/sources.list`. Before installing software, you should update your package list with `apt-get update`:
 
-```
+```bash
 sudo apt-get update
 ```
 
 ## Installing a package with APT
 
-```
+```bash
 sudo apt-get install tree
 ```
 
-Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just hitting `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
+Typing this command should inform the user how much disk space the package will take up and asks for confirmation of the package installation. Entering `Y` (or just pressing `Enter`, as yes is the default action) will allow the installation to occur. This can be bypassed by adding the `-y` flag to the command:
 
-```
+```bash
 sudo apt-get install tree -y
 ```
 
@@ -34,11 +34,11 @@ Installing this package makes `tree` available for the user.
 
 ## Using an installed package
 
-`tree` is a command line tool which provides a visualisation of the directory structure of the current directory, and all it contains.
+`tree` is a command-line tool which provides a visualisation of the structure of the current directory, and all its contents.
 
 - Typing `tree` runs the tree command. For example:
 
-```
+```bash
 tree
 ..
 ├── hello.py
@@ -50,10 +50,10 @@ tree
 
 ```
 
-- Typing `man tree` gives the manual entry for the package `tree`
+- Typing `man tree` gives the manual entry for the package `tree`.
 - Typing `whereis tree` shows where `tree` lives:
 
-```
+```bash
 tree: /usr/bin/tree
 ```
 
@@ -63,7 +63,7 @@ tree: /usr/bin/tree
 
 You can uninstall a package with `apt-get remove`:
 
-```
+```bash
 sudo apt-get remove tree
 ```
 
@@ -73,7 +73,7 @@ The user is prompted to confirm the removal. Again, the `-y` flag will auto-conf
 
 You can also choose to completely remove the package and its associated configuration files with `apt-get purge`:
 
-```
+```bash
 sudo apt-get purge tree
 ```
 
@@ -85,14 +85,14 @@ If software updates are available, you can get the updates with `sudo apt-get up
 
 You can search the archives for a package with a given keyword with `apt-cache search`:
 
-```
+```bash
 apt-cache search locomotive
 sl - Correct you if you type `sl' by mistake
 ```
 
 You can view more information about a package before installing it with `apt-cache show`:
 
-```
+```bash
 apt-cache show sl
 Package: sl
 Version: 3.03-17

@@ -1,16 +1,16 @@
 # Linux
 
-Explanation of some fundamental Linux usage and commands for getting around the Pi and managing its filesystem and users
+Explanation of some fundamental Linux usage, and commands for getting around the Pi and managing its file system and users.
 
 ## Contents
 
 - [Filesystem](filesystem/README.md)
     - [Home](filesystem/home.md)
-        - Your user's home folder on the Pi - where you keep your files
-    - [Whole Filesystem](filesystem/whole-filesystem.md)
-        - The rest of the Linux filesystem
+        - Your user's home folder on the Pi, where you keep your files
+    - [Whole File system](filesystem/whole-filesystem.md)
+        - The rest of the Linux file system
     - [Backup](filesystem/backup.md)
-        - Backing up your files and your Operating System image
+        - Backing up your files and your operating system image
 - [Usage](usage/README.md)
     - [Commands](usage/commands.md)
         - Some basic and more advanced Linux commands
@@ -31,8 +31,6 @@ Explanation of some fundamental Linux usage and commands for getting around the 
 - [Software](software/README.md)
     - [APT](software/apt.md)
         - Installing software with APT
-    - [Pi Store](software/pi-store.md)
-        - Installing software from the Pi Store
     - [Python](software/python.md)
         - Installing software using a Python package manager such as `pip`
     - [Ruby](software/ruby.md)
@@ -44,5 +42,7 @@ Explanation of some fundamental Linux usage and commands for getting around the 
         - Building the Linux kernel on Raspberry Pi
     - [Configuring](kernel/configuring.md)
         - Configuring the Linux kernel on Raspberry Pi
+    - [Patching](kernel/patching.md)
+        - Applying patches to the Linux kernel on Raspberry Pi
     - [Headers](kernel/headers.md)
         - Getting the kernel headers
